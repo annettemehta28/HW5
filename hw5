@@ -1,0 +1,35 @@
+import math
+
+def gcd(a, b):
+    """Calculate the greatest common divisor of two numbers."""
+    if b > a:
+        a, b = b, a
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+def remove_pairs(path):
+    """Remove consecutive inverse direction pairs from the path."""
+    if len(path) < 2:
+        return path
+    if (path[0] == 'E' and path[1] == 'W') or (path[0] == 'W' and path[1] == 'E') or \
+       (path[0] == 'N' and path[1] == 'S') or (path[0] == 'S' and path[1] == 'N'):
+        return remove_pairs(path[2:])
+    return path[0] + remove_pairs(path[1:])
+def bisection_root(function, x1, x2, 0.001):
+    """Find the root of a function within a specified interval using the bisection method."""
+    y1 = function(x1)
+    y2 = function(x2)
+    if y1 * y2 > 0:
+        raise ValueError("Function values at the endpoints have the same sign, no root can be guaranteed.")
+    if abs(y1) < 0.001:
+        return x1
+    if abs(y2) < 0.001:
+        return x2
+    mid = (x1 + x2) / 2
+    y_mid = function(mid)
+    if abs(y_mid) < tolerance:
+        return mid
+    elif y_mid * y1 < 0:
+        return bisection_root(function, x1, mid, tolerance)
+    else:
+        return bisection_root(function, mid, x2, tolerance)
