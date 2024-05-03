@@ -20,22 +20,7 @@ def gcd(a, b):
     
   
 #problem 2 - we slayed it!! 
-def remove_pairs(path):
-    new_path = ''
-    if len(path)==0 or len(path)==1:
-        return path
-    else:
-        for i in path:
-            first, second = path[i], path[(i+1)]
-            if {(first== "E" and second == "W" ) or (first== "W" and second == "E" ) or 
-            (first== "N" and second== "S" ) or (first== "S" and second == "N" )}:
-                path.strip(first)
-                path.strip(second)
-                return remove_pairs(path) 
-            else: 
-                new_path = new_path + path[0] 
-                return new_path, remove_pairs(path[1:])
-  
+
 
 def remove_pairs(path):
     if len(path) < 2:
@@ -44,8 +29,8 @@ def remove_pairs(path):
         i = 0  
         while i < len(path) - 1:  
             first, second = path[i], path[i+1]
-            if (first == "E" and second == "W") or (first == "W" and second == "E") or \
-               (first == "N" and second == "S") or (first == "S" and second == "N"):
+            if (first == "E" and second == "W") or (first == "W" and second == "E")or\
+            (first == "N" and second == "S") or (first == "S" and second == "N"):
                 path = path[:i] + path[i+2:]
                 return remove_pairs(path)
             i += 1
