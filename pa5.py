@@ -7,7 +7,6 @@ Created on Tue Apr 30 20:13:17 2024
 """
 
 import math
-#problem 1
 def gcd(a, b):
     if b>a:
         new = a
@@ -16,12 +15,7 @@ def gcd(a, b):
     if b == 0:
         return a 
     else: 
-        return gcd(b, (a%b))
-    
-  
-#problem 2 - we slayed it!! 
-
-
+        return gcd(b, (a%b)
 def remove_pairs(path):
     if len(path) < 2:
         return path
@@ -35,9 +29,6 @@ def remove_pairs(path):
                 return remove_pairs(path)
             i += 1
         return path 
-    
- 
-#problem 3
 def bisection_root(function, x1, x2):
     y1 = function(x1)
     y2 = function(x2)
@@ -52,12 +43,3 @@ def bisection_root(function, x1, x2):
     if newy * y1 < 0:
         return bisection_root(function, new_val, x1)
     return bisection_root(function, new_val, x2)
-
-print(bisection_root(math.sin, 2, 4))
-    
-    
-    
-    
-        
-        
-    
